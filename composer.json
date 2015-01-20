@@ -1,0 +1,17 @@
+{
+    "require": {
+        "klein/klein": "2.0.x",
+        "ircmaxell/password-compat": "dev-master",
+        "symfony/yaml": "2.*",
+        "ccampbell/chromephp": "*",
+        "propel/propel": "~2.0@dev",
+        "monolog/monolog": "1.*"
+    },
+    "autoload": {
+        "classmap": ["protected/models/generated-classes/"]
+    },
+    "minimum-stability": "dev",
+    "config": {
+        "bin-dir": "bin/"
+    }
+}

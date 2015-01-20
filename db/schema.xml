@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<database name="hydradb" defaultIdMethod="native" defaultPhpNamingMethod="underscore">
+  <table name="example_table">
+    <column name="id" type="INTEGER" primaryKey="true" autoIncrement="true" />
+  </table>
+</databse>

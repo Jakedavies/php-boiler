@@ -1,0 +1,33 @@
+propel:
+  database:
+      connections:
+          hydradb:
+              adapter: mysql
+              classname: Propel\Runtime\Connection\ConnectionWrapper
+              dsn: "mysql:host=127.0.0.1;dbname=hydradb;port=3306"
+              user: hydrauth
+              password: hydr@
+              attributes:
+  runtime:
+      defaultConnection: hydradb
+      connections:
+          - hydradb
+  generator:
+      defaultConnection: hydradb
+      connections:
+          - hydradb
+
+  paths:
+      projectDir:  ../
+      # The directory where Propel expects to find your `schema.xml` file.
+      schemaDir: db
+
+      # The directory where Propel should output classes, sql, config, etc.
+      # Default value is current path #
+      outputDir: db
+
+      # The directory where Propel should output generated object model classes.
+      phpDir: protected/models/generated-classes
+
+      # The directory where Propel should output the generated DDL (or data insert statements, etc.)
+      sqlDir: db/migrations
