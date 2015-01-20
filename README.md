@@ -1,14 +1,17 @@
-#Hydra
-##Control your content
+#php-boiler
 
-To use hydra, you must apply the following .htaccess rules
+## Instructions
 
-+ allow all assets to be routed straight through to their requested path
-+ any request that contains the string '.json' must be routed to jsonrequets.php
+To use this php boilerplate code do the following
+
++ install dependencies using composer 
++ allow all ./assets to be routed straight through to their requested path
 + everything else should be routed to index.php
 
-You must also ensure that url rewrite is enabled for apache
+You must also ensure that url rewrite is enabled fir apache for url rerouting to work. 
 
-### The hydra.php download
-The file that is downloaded from hydra.php supports PHP's APC caching module, if APC is not installed caching will be done to a text file.
-For high traffic sites it is recommended to enable the APC module for the PHP process.
+## Info
+
+This is a typical MVC architecture. Propel ORM is used for models, Klein Router is used for routing. 
+
+All MVC components are in the ./protected folder. 
