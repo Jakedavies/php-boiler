@@ -1,21 +1,21 @@
 propel:
   database:
       connections:
-          hydradb:
+          defaultdb:
               adapter: mysql
               classname: Propel\Runtime\Connection\ConnectionWrapper
-              dsn: "mysql:host=127.0.0.1;dbname=hydradb;port=3306"
+              dsn: "mysql:host=127.0.0.1;dbname=phpboilerdb;port=3306"
               user: username
               password: password
               attributes:
   runtime:
-      defaultConnection: hydradb
+      defaultConnection: defaultdb
       connections:
-          - hydradb
+          - defaultdb
   generator:
-      defaultConnection: hydradb
+      defaultConnection: defaultdb
       connections:
-          - hydradb
+          - defaultdb
 
   paths:
       projectDir:  ../
