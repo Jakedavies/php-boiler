@@ -21,9 +21,8 @@ Class Renderer
                 extract($vars);
             }
             ob_start();
-
             include $file;
-            print withLayout(ob_get_clean());
+            print self::withLayout(ob_get_clean());
         }
     }
     public static function withLayout($content)

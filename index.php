@@ -17,7 +17,7 @@ $klein->respond('GET','/',function ($request, $response, $service, $app){
  * Campaign Routes
  */
 $klein->with('/lander', function () use ($klein) {
-    $klein->respond('GET','/', function($request, $response, $service, $app){
+    $klein->respond('GET','?', function($request, $response, $service, $app){
         LanderController::hello($response,$request);
     });
 });
