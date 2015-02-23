@@ -8,7 +8,7 @@
         "monolog/monolog": "1.*"
     },
     "autoload": {
-        "classmap": ["protected/models/generated-classes/"]
+        "classmap": ["app/models/"]
     },
     "minimum-stability": "dev",
     "config": {
