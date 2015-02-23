@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ ."/../vendor/autoload.php";
 require_once __DIR__ ."/../lib/Renderer.php";
-require_once __DIR__ . '/../protected/controllers/LanderController.php';
+require_once __DIR__ . '/../app/controllers/LanderController.php';
 
 use Propel\Runtime\Propel;
 use Propel\Runtime\Connection\ConnectionManagerSingle;
@@ -10,8 +10,8 @@ $serviceContainer->setAdapterClass('hydradb', 'mysql');
 $manager = new ConnectionManagerSingle();
 $manager->setConfiguration(array(
     'dsn'      => 'mysql:host=127.0.0.1;dbname=hydradb;port=3306',
-    'user'     => 'hydrauth',
-    'password' => 'hydr@',
+    'user'     => 'user',
+    'password' => 'password',
 ));
 $serviceContainer->setConnectionManager('hydradb', $manager);
 
