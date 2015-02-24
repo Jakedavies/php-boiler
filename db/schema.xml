@@ -1,6 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
-<database name="hydradb" defaultIdMethod="native" defaultPhpNamingMethod="underscore">
-  <table name="example_table">
+<database name="defaultdb" defaultIdMethod="native" defaultPhpNamingMethod="underscore">
+  <table name="user">
     <column name="id" type="INTEGER" primaryKey="true" autoIncrement="true" />
+    <column name="email" type="varchar" />
+    <column name="password" type="varchar" />
+    <column name="type" type="varchar"/>
   </table>
-</databse>
+  <table name="charity">
+    <column name="id" type="INTEGER" primaryKey="true" autoIncrement="true" />
+    <column name="name" type="varchar"/>
+    <column name="owner" type="INTEGER"/>
+    <column name="description" type="LONGVARCHAR"/>
+    <column name="preview" type="varchar"/>
+    <foreign-key foreignTable="user" name="FK_CHARITY_USER">
+      <reference local="owner" foreign="id"/>
+    </foreign-key>
+  </table>
+</database>

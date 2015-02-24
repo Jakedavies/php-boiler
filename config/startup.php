@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ ."/../vendor/autoload.php";
-require_once __DIR__ ."/../lib/Renderer.php";
+require_once __DIR__ ."/../lib/renderer/Renderer.php";
+require_once __DIR__ . '/../app/controllers/BaseController.php';
 require_once __DIR__ . '/../app/controllers/LanderController.php';
 
 use Propel\Runtime\Propel;
@@ -14,7 +15,3 @@ $manager->setConfiguration(array(
     'password' => 'password',
 ));
 $serviceContainer->setConnectionManager('defaultdb', $manager);
-
-$logger = new Logger('defaultLogger');
-$logger->pushHandler(new StreamHandler('php://stderr'));
-Propel::getServiceContainer()->setLogger('defaultLogger', $logger);
