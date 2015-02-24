@@ -30,4 +30,7 @@ propel:
       phpDir: app/models
 
       # The directory where Propel should output the generated DDL (or data insert statements, etc.)
-      sqlDir: db/migrations
+      sqlDir: db/ddl
+
+      # Where propel will putt migrations
+      migrationDir: db/migrations
