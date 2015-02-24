@@ -5,7 +5,7 @@ propel:
               adapter: mysql
               classname: Propel\Runtime\Connection\ConnectionWrapper
               dsn: "mysql:host=127.0.0.1;dbname=donationdb;port=3306"
-              user: username
+              user: donation-auth
               password: password
               attributes:
   runtime:
