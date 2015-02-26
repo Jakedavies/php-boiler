@@ -1,6 +1,6 @@
 <?php
 
-class LoginController
+class UserController extends BaseController
 {
     public static function getLogin($response,$request)
     {
