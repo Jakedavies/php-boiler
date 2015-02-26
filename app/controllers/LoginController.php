@@ -4,15 +4,15 @@ class LoginController
 {
     function getLogin($response,$request)
     {
-        Renderer::renderView('/user/login');
+        Renderer::renderView('/user/login',['layout'=>false]);
     }
-
     function postLogin($response,$request) {
         $email = $request->param('email');
         $password = $request->param('password');
 
 
         $user = UserQuery::create()->findOneByEmail($email);
+		
         if ($user->getPassword()==$password)
         {
 //            Succesful validation
