@@ -22,6 +22,16 @@ $klein->with('/lander', function () use ($klein) {
     });
 });
 
+//User Login Route
+$klein->with('/user', function () use ($klein) {
+    $klein->respond('GET','/login', function($request, $response, $service, $app){
+        LoginController::getLogin($response,$request);
+    });
+    $klein->respond('POST','/login', function($request, $response, $service, $app){
+        LoginController::postLogin($response,$request);
+    });
+});
+
 $klein->respond('404',function (){
     echo '<h5>Page Not Found</h5>';
 });
