@@ -30,6 +30,15 @@ $klein->with('/user', function () use ($klein) {
     $klein->respond('POST','/login', function($request, $response, $service, $app){
         LoginController::postLogin($response,$request);
     });
+    $klein->respond('GET','/registration', function($request, $response, $service, $app){
+        LoginController::getRegistration($response,$request);
+    });
+    $klein->respond('POST','/registration', function($request, $response, $service, $app){
+        LoginController::postRegistration($response,$request);
+    });
+    $klein->respond('GET','/account', function($request, $response, $service, $app){
+        LoginController::getAccount($response,$request);
+    });
 });
 
 $klein->respond('404',function (){

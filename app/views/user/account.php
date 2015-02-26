@@ -1,0 +1,1 @@
+<h1>Placeholder for my account information. Here I would be able to edit settings and see things about my account.</h1>

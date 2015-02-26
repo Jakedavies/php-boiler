@@ -1,7 +1,7 @@
 <?php
 
 class LanderController extends BaseController{
-    public static function hello($request,$response)
+    public static function hello($response,$request)
     {
         $greeting = "Hello World";
 

@@ -1,0 +1,1 @@
+<h1>Placeholder for registration view, should have a form of some sort</h1>
