@@ -4,7 +4,7 @@ require_once __DIR__ ."/../lib/renderer/Renderer.php";
 require_once __DIR__ . '/../app/controllers/BaseController.php';
 require_once __DIR__ . '/../app/controllers/LanderController.php';
 require_once __DIR__ . '/../app/controllers/UserController.php';
-
+require_once __DIR__ . '/../app/controllers/CharityController.php';
 use Propel\Runtime\Propel;
 use Propel\Runtime\Connection\ConnectionManagerSingle;
 $serviceContainer = Propel::getServiceContainer();

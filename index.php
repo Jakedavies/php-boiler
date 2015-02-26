@@ -41,6 +41,11 @@ $klein->with('/user', function () use ($klein) {
     });
 });
 
+$klein->with('/charity', function () use ($klein) {
+    $klein->respond('GET','?', function($request, $response, $service, $app){
+        CharityController::getIndex($response,$request);
+    });
+});
 $klein->respond('404',function (){
     echo '<h5>Page Not Found</h5>';
 });
