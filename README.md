@@ -1,8 +1,8 @@
-#php-boiler
+#donation platform
 
 ## Instructions
 
-To use this php boilerplate code do the following
+To use this code do the following
 
 + install dependencies using composer 
 + allow all ./assets to be routed straight through to their requested path
