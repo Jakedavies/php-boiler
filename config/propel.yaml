@@ -8,6 +8,13 @@ propel:
               user: donation-auth
               password: password
               attributes:
+          testdb:
+              adapter: mysql
+              classname: Propel\Runtime\Connection\ConnectionWrapper
+              dsn: "mysql:host=127.0.0.1;dbname=testdb;port=3306"
+              user: travis
+              password:
+              attributes:
   runtime:
       defaultConnection: defaultdb
       connections:
