@@ -40,10 +40,13 @@ $klein->with('/user', function () use ($klein) {
         UserController::getAccount($response,$request);
     });
 });
-
+//Charity Page Route
 $klein->with('/charity', function () use ($klein) {
     $klein->respond('GET','?', function($request, $response, $service, $app){
         CharityController::getIndex($response,$request);
+    });
+    $klein->respond('GET','id=[i:id]', function($request, $response, $service, $app){
+        CharityController::show($response,$request);
     });
 });
 $klein->respond('404',function (){
