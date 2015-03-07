@@ -13,11 +13,12 @@ class CharityController extends BaseController{
     }
 
     public static function show($respone, $request){
-        $url = $_SERVER['PATH_INFO'];
-        $pos = strrpos($url,"=");
-        $id = intval(substr($url,$pos+1,strlen($url)-$pos));
+        $id = $request->param('id');
+//        $url = $_SERVER['PATH_INFO'];
+//        $pos = strrpos($url,"=");
+//        $id = intval(substr($url,$pos+1,strlen($url)-$pos));
         $charity = CharityQuery::create()->findPK($id);
-        Renderer::renderView('/charity/sponsor',['charity'=>$charity]);
+        Renderer::renderView('/charity/show',['charity'=>$charity]);
 
     }
 }

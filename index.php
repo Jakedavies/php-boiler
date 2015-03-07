@@ -42,11 +42,12 @@ $klein->with('/user', function () use ($klein) {
 });
 //Charity Page Route
 $klein->with('/charity', function () use ($klein) {
+    //will response to /charity/id as long as id is an integer, IE. /charity/10
+    $klein->respond('GET','/[i:id]', function($request, $response, $service, $app){
+        CharityController::show($response,$request);
+    });
     $klein->respond('GET','?', function($request, $response, $service, $app){
         CharityController::getIndex($response,$request);
-    });
-    $klein->respond('GET','id=[i:id]', function($request, $response, $service, $app){
-        CharityController::show($response,$request);
     });
 });
 $klein->respond('404',function (){
