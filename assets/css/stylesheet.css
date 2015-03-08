@@ -1,0 +1,158 @@
+* {
+	border-radius: 0 !important;
+	-webkit-box-shadow: none !important;
+	-moz-box-shadow: none !important;
+	box-shadow: none !important;
+}
+
+body {
+	background-color: #fff;
+	/* text-align: center; */
+}
+
+.text_deco {
+	text-decoration: none !important;
+}
+
+.stats-item {
+	text-decoration: none;
+}
+
+.divider {
+	height: 1px;
+	margin-top: 15px;
+	margin-bottom: 1px;
+	/*background-color: #202020;*/
+	background-color: #333;
+}
+
+.history_title {
+	/*margin-top: 20px;*/
+	margin-bottom: -15px;
+	color: #333;
+}
+
+.info_box {
+	margin-top: 20px;
+	margin-bottom: 50px;
+	padding-bottom: 20px;
+	padding-top: 20px;
+	border: solid black 1px;
+	background-color: #f6f6f6;
+}
+
+.profile-container {
+	height:80px;
+	background-color:#f6f6f6;
+	border:solid black 1px;
+	width:100%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	text-align: center;
+	display: table;
+}
+
+.profile-container:hover {
+	background-color: #eee;
+}
+
+.profile-container h3 {
+	display: table-cell;
+	vertical-align: middle;
+	text-decoration: none;
+	color: #000;
+}
+
+.dropdown:hover .dropdown-menu {
+	display: block;
+	margin-top: 0px !important;
+	-webkit-margin-top: none !important;
+	-moz-margin-top: none !important;
+}
+
+.dropdown-menu {
+	margin-top: 0px !important;
+}
+
+.nav li:hover {
+	background-color:#eee;
+}
+
+.navbar {
+	background-color: #f6f6f6 !important;
+	/* border-bottom: solid black 1px !important; */
+	/* border: none !important; */
+}
+
+.indent {
+	margin-left: 25px;
+	/* text-align: right; */
+}
+
+.well {
+	border: none !important;
+}
+
+.charity-logo {
+	width: 40px;
+	height: 40px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	/* margin-left: -20px; */
+}
+
+.browse-charity-element {
+	border: solid black 1px;
+	/* margin-top: 15px; */
+	margin-bottom: 30px;
+	background-color: #f6f6f6;
+	/* z-index: 9999; */
+}
+
+.browse-charity-element:hover {
+	background-color: #fff;
+}
+
+.browse-column {
+	/* height: 300px; */
+	/* background-color: gray; */
+	/* border: solid black 1px; */
+	/* margin-left: 5px; */
+	/* margin-right: 5px; */
+}
+
+/* .element-mask {
+	background-color: #fff;
+	z-index: 99999;
+} */
+
+.browse-charity-image {
+	width: 100%;
+	padding: 10px;
+/* 	padding-left: 5px;
+padding-right: 5px;
+padding-top: 5px;
+padding-bottom: 5px; */
+}
+
+.browse-charity-text {
+	padding: 10px;
+	padding-top: 0px !important;
+	color: black;
+}
+
+/* .browse-charity-element:hover {
+	text-decoration: none;
+}
+
+.browse-charity-text:hover {
+	text-decoration: none;
+}
+
+*:hover {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+} */

@@ -5,7 +5,8 @@
         "symfony/yaml": "2.*",
         "ccampbell/chromephp": "*",
         "propel/propel": "~2.0@dev",
-        "monolog/monolog": "1.*"
+        "monolog/monolog": "1.*",
+        "phpunit": "*"
     },
     "autoload": {
         "classmap": ["app/models/"]

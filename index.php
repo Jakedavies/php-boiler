@@ -27,8 +27,14 @@ $klein->with('/user', function () use ($klein) {
     $klein->respond('GET','/login', function($request, $response, $service, $app){
         UserController::getLogin($response,$request);
     });
+    $klein->respond('GET','/logout', function($request, $response, $service, $app){
+        UserController::logout($response,$request);
+    });
     $klein->respond('POST','/login', function($request, $response, $service, $app){
         UserController::postLogin($response,$request);
+    });
+    $klein->respond('GET','/registration/sponsor', function($request, $response, $service, $app){
+        UserController::getSponsorRegistration($response,$request);
     });
     $klein->respond('GET','/registration', function($request, $response, $service, $app){
         UserController::getRegistration($response,$request);
