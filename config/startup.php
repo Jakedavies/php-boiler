@@ -5,6 +5,8 @@ require_once __DIR__ . '/../app/controllers/BaseController.php';
 require_once __DIR__ . '/../app/controllers/LanderController.php';
 require_once __DIR__ . '/../app/controllers/UserController.php';
 require_once __DIR__ . '/../app/controllers/CharityController.php';
+require_once __DIR__ . '/../lib/session/Session.php';
+require_once __DIR__ . '/../lib/session/AuthHelper.php';
 use Propel\Runtime\Propel;
 use Propel\Runtime\Connection\ConnectionManagerSingle;
 $serviceContainer = Propel::getServiceContainer();
@@ -20,7 +22,6 @@ if(isset($_ENV['DB'])&&$_ENV['DB']=='travis_ci_test')
     $serviceContainer->setConnectionManager('testdb', $manager);
 }
 else{
-    $serviceContainer->setConnectionManager('defaultdb', $manager);
     $serviceContainer->setAdapterClass('defaultdb', 'mysql');
     $manager = new ConnectionManagerSingle();
     $manager->setConfiguration(array(
@@ -30,7 +31,3 @@ else{
     ));
     $serviceContainer->setConnectionManager('defaultdb', $manager);
 }
-
-
-
-
