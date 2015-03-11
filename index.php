@@ -27,8 +27,14 @@ $klein->with('/user', function () use ($klein) {
     $klein->respond('GET','/login', function($request, $response, $service, $app){
         UserController::getLogin($response,$request);
     });
+    $klein->respond('GET','/logout', function($request, $response, $service, $app){
+        UserController::logout($response,$request);
+    });
     $klein->respond('POST','/login', function($request, $response, $service, $app){
         UserController::postLogin($response,$request);
+    });
+    $klein->respond('GET','/registration/sponsor', function($request, $response, $service, $app){
+        UserController::getSponsorRegistration($response,$request);
     });
     $klein->respond('GET','/registration', function($request, $response, $service, $app){
         UserController::getRegistration($response,$request);
@@ -40,8 +46,12 @@ $klein->with('/user', function () use ($klein) {
         UserController::getAccount($response,$request);
     });
 });
-
+//Charity Page Route
 $klein->with('/charity', function () use ($klein) {
+    //will response to /charity/id as long as id is an integer, IE. /charity/10
+    $klein->respond('GET','/[i:id]', function($request, $response, $service, $app){
+        CharityController::show($response,$request);
+    });
     $klein->respond('GET','?', function($request, $response, $service, $app){
         CharityController::getIndex($response,$request);
     });

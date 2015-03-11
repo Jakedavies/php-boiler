@@ -4,7 +4,12 @@ class UserController extends BaseController
 {
     public static function getLogin($response,$request)
     {
-        Renderer::renderView('/user/login',['layout'=>false]);
+        Renderer::renderView('/user/login');
+    }
+    public static function logout($response,$request)
+    {
+        Session::getInstance()->destroy();
+        $response->redirect('/user/login');
     }
     public static function postLogin($response,$request)
     {
@@ -16,7 +21,8 @@ class UserController extends BaseController
         if ($user->getPassword()==$password)
         {
             //Succesful validation
-            $response->redirect('/lander/hello');
+            Session::getInstance()->id = $user->getId();
+            $response->redirect('/charity');
         }
         else
         {
@@ -26,7 +32,11 @@ class UserController extends BaseController
     }
     public static function getRegistration($response,$request)
     {
-        Renderer::renderView('/user/registration',['layout'=>false]);
+        Renderer::renderView('/user/registration');
+    }
+    public static function getSponsorRegistration($response,$request)
+    {
+        Renderer::renderView('/user/sponsor_registration');
     }
     public static function postRegistration($response,$request)
     {
