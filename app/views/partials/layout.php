@@ -39,7 +39,7 @@
                             <li><a href="/user/account">Account Details</a></li>
                         </ul>
                     <?php else: ?>
-                        <a href="/user/login" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Login</span></a>
+                        <a href="/user/login" aria-expanded="false">Login</span></a>
                     <?php endif; ?>
                 </li>
             </ul>

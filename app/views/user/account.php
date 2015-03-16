@@ -106,11 +106,7 @@
         </div>
         <div class="row">
             <div class="col-sm-5 col-sm-offset-1 contact-elem">EMAIL</div>
-            <div class="col-sm-5 indent">sample@domain.example</div>
-        </div>
-        <div class="row">
-            <div class="col-sm-5 col-sm-offset-1 contact-elem">ORGANIZATION</div>
-            <div class="col-sm-5 indent">Sample Organization</div>
+            <div class="col-sm-5 indent"><?=current_user()->getEmail()?></div>
         </div>
         <div class="row">
             <div class="col-sm-12">
