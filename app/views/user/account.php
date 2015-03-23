@@ -128,3 +128,4 @@
         </div>
     </div>
 </div>
+<button type="button" class="btn btn-default" onclick="window.location.href='/user/editAccount'">Edit Account</button>
