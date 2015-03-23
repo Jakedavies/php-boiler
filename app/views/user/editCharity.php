@@ -1,9 +1,27 @@
 
 <link href="/assets/css/custom.css" rel="stylesheet">
 <div class="page-header">
-    <h1>Edit My Account</h1>
+    <h1>Edit Charity Account</h1>
 </div>
-<form action="/user/editAccount" method="post">
+<form action="/user/editCharity" method="post">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Change Charity Logo</h3>
+        </div>
+        <div class="panel-body">
+            <div class="row col-md-offset-3">
+                <div class="col-xs-6 col-md-3">
+                    <a class="thumbnail">
+                        <img src="/assets/images/placeholder.png">
+                    </a>
+                </div>
+                <div class="col-xs-col-6 col-md-4 col-md-offset-1">
+                    <label>Change Logo</label>
+                    <input type="file" id="logo">
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">Change Your Email</h3>

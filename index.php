@@ -51,6 +51,12 @@ $klein->with('/user', function () use ($klein) {
     $klein->respond('GET','/editAccount', function($request, $response, $service, $app){
         UserController::getEditAccount($response,$request);
     });
+    $klein->respond('POST','/editCharity', function($request, $response, $service, $app){
+        UserController::postEditCharity($response,$request);
+    });
+    $klein->respond('GET','/editCharity', function($request, $response, $service, $app){
+        UserController::getEditCharity($response,$request);
+    });
 });
 //Charity Page Route
 $klein->with('/charity', function () use ($klein) {

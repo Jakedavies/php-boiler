@@ -132,3 +132,4 @@
         </div>
     </div>
 </div>
+<button type="button" class="btn btn-default" onclick="window.location.href='/user/charityAccount'">Edit Account</button>

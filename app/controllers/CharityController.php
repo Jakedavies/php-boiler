@@ -37,4 +37,5 @@ class CharityController extends BaseController{
         // TODO: fill this out
         echo 'donation made!';
     }
+
 }

@@ -54,5 +54,13 @@ class UserController extends BaseController
     {
         Renderer::renderView('/user/editAccount');
     }
+    public static function postEditCharity($response,$request)
+    {
+        //TODO: post changes to the database
+    }
+    public static function getEditCharity($response,$request)
+    {
+        Renderer::renderView('/user/editCharity');
+    }
 
 }
