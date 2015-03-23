@@ -46,5 +46,13 @@ class UserController extends BaseController
     {
         Renderer::renderView('/user/account');
     }
+    public static function postEditAccount($response,$request)
+    {
+        //TODO: post changes to the database
+    }
+    public static function getEditAccount($response,$request)
+    {
+        Renderer::renderView('/user/editAccount');
+    }
 
 }

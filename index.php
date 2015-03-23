@@ -45,12 +45,24 @@ $klein->with('/user', function () use ($klein) {
     $klein->respond('GET','/account', function($request, $response, $service, $app){
         UserController::getAccount($response,$request);
     });
+    $klein->respond('POST','/editAccount', function($request, $response, $service, $app){
+        UserController::postEditAccount($response,$request);
+    });
+    $klein->respond('GET','/editAccount', function($request, $response, $service, $app){
+        UserController::getEditAccount($response,$request);
+    });
 });
 //Charity Page Route
 $klein->with('/charity', function () use ($klein) {
     //will response to /charity/id as long as id is an integer, IE. /charity/10
     $klein->respond('GET','/[i:id]', function($request, $response, $service, $app){
         CharityController::show($response,$request);
+    });
+    $klein->respond('GET','/[i:id]/donate', function($request, $response, $service, $app){
+        CharityController::getDonate($response,$request);
+    });
+    $klein->respond('POST','/[i:id]/donate', function($request, $response, $service, $app){
+        CharityController::postDonate($response,$request);
     });
     $klein->respond('GET','?', function($request, $response, $service, $app){
         CharityController::getIndex($response,$request);

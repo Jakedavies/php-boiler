@@ -3,32 +3,26 @@
     <head>
         <meta charset="UTF-8">
         <title>Create An User Account</title>
-        
-        <!-- Custom styles for this template -->
-    	<link rel="stylesheet" type="text/css" href="../../../assets/css/newAccount.css">
-    	<link href="../../../assets/css/custom.css" rel="stylesheet">
-    	
-        <!-- Bootstrap core CSS -->
-    	<link href="../../../assets/css/bootstrap.css" rel="stylesheet">
 
-        
+        <!-- Custom styles for this template -->
+    	<link href="/assets/css/custom.css" rel="stylesheet">
     </head>
     <body>
     	<div class="container">
 			<div class="page-header">
-	      		<h1>Create A User Account</h1>    
+	      		<h1>Create A User Account</h1>
 	      	</div>
-	      	
+
 	      	<div class="panel panel-default">
 			  <div class="panel-heading">
 			  	<div class="btn-group btn-group-lg" role="group">
-		      		<button type="button" class="btn btn-default active">User Account</button>
+		      		<button type="button" class="btn btn-default active">User Accounts</button>
 		      		<button type="button" class="btn btn-default" onclick=" window.location.href='newSponser.php'">Charity Account</button>
 	      		</div>
 			  </div>
 			  <div class="panel-body">
-			
-	      	
+
+
 				<div class="col-md-6 col-md-offset-3">
 					<form role="form" action="newUser.php" method="post">
 			   		  <div class="form-group">
@@ -61,9 +55,6 @@
 			   </div>
 			 </div>
 			<button type="button" class="btn btn-default logout" onclick="window.location.href='login.php'">Back To Log In </button>
-		   
-		    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-			<script src="/assets/js/bootstrap.min.js"></script>
 	   </div>
     </body>
 </html>

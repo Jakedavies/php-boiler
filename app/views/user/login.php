@@ -7,13 +7,13 @@
         <div class="panel-body">
             <form class="form-horizontal" role="form" action="/user/login" method="post">
               <div class="form-group">
-                <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                <label class="col-sm-2 control-label">Email</label>
                 <div class="col-md-8">
                   <input type="email" class="form-control" id="Email" name = "email" placeholder="Email">
                 </div>
               </div>
               <div class="form-group">
-                <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                <label class="col-sm-2 control-label">Password</label>
                 <div class="col-md-8">
                   <input type="password" class="form-control" id="Password1" name="password" placeholder="Password">
                 </div>
