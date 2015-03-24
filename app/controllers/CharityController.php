@@ -37,5 +37,13 @@ class CharityController extends BaseController{
         // TODO: fill this out
         echo 'donation made!';
     }
+    public static function postEdit($response,$request)
+    {
+        //TODO: post changes to the database
+    }
+    public static function getEdit($response,$request)
+    {
+        Renderer::renderView('/charity/edit');
+    }
 
 }

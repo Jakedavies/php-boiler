@@ -3,7 +3,7 @@
 <div class="page-header">
     <h1>Edit Charity Account</h1>
 </div>
-<form action="/user/editCharity" method="post">
+<form action="/user/editCharity" method="post" enctype="multipart/form-data">
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">Change Charity Logo</h3>
