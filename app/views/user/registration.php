@@ -12,6 +12,11 @@
     <div class="panel-body">
         <div class="col-md-6 col-md-offset-3">
             <form role="form" action="/user/registration" method="post">
+                <?php if (isset($_GET['error'])): ?>
+                    <div class="error col-md-offset-1">
+                        <h5 style="color: red"><?=($_GET['error'])?></h5>
+                    </div>
+                <?php endif; ?>
                 <div class="form-group">
                     <label for="Email">Email address</label>
                     <input type="email" class="form-control" id="Email" name="email" placeholder="Email">
