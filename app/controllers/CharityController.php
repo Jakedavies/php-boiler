@@ -7,17 +7,20 @@
  */
 
 class CharityController extends BaseController{
-    public static function getIndex($respone, $request)
-    {
+    public static function getIndex($response, $request){
+        if($request->param('searchquery')) {
+            $charities = CharityQuery::create()
+            ->filterByName('%' . $request->param('searchquery') . '%')
+            ->find();
+        }
+    else {
         $charities = CharityQuery::create()->find();
-        Renderer::renderView('/charity/index', ['charities' => $charities]);
+        }
+        Renderer::renderView('/charity/index',['charities'=>$charities]);
     }
 
-    public static function show($respone, $request){
+    public static function show($response, $request){
         $id = $request->param('id');
-//        $url = $_SERVER['PATH_INFO'];
-//        $pos = strrpos($url,"=");
-//        $id = intval(substr($url,$pos+1,strlen($url)-$pos));
         $charity = CharityQuery::create()->findPK($id);
         Renderer::renderView('/charity/show',['charity'=>$charity]);
 

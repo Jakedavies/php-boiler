@@ -40,7 +40,21 @@ class UserController extends BaseController
     }
     public static function postRegistration($response,$request)
     {
-        //TODO: verify registration is valid, if valid then notify and send to login page, else redirect back with error
+        $user = new User();
+        $user->setEmail($request->param('email'));
+        $user->setPassword($request->param('password'));
+        $code=md5(mt_rand());
+        $user->setCom-code($code);
+        $user->setConfrimed(0);
+        $user->save();
+//        $verify = new VerifyEmailMailer(param('email'));
+        //$verify->send();
+    }
+    public static function confirm($response,$request) {
+        //If confirmed
+        echo 'you have been confirmed';
+        //else
+        echo 'you have not been confirmed';
     }
     public static function getAccount($response,$request)
     {

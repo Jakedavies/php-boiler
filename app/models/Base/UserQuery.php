@@ -24,11 +24,15 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildUserQuery orderByEmail($order = Criteria::ASC) Order by the email column
  * @method     ChildUserQuery orderByPassword($order = Criteria::ASC) Order by the password column
  * @method     ChildUserQuery orderByType($order = Criteria::ASC) Order by the type column
+ * @method     ChildUserQuery orderByCom-code($order = Criteria::ASC) Order by the com-code column
+ * @method     ChildUserQuery orderByConfirmed($order = Criteria::ASC) Order by the confirmed column
  *
  * @method     ChildUserQuery groupById() Group by the id column
  * @method     ChildUserQuery groupByEmail() Group by the email column
  * @method     ChildUserQuery groupByPassword() Group by the password column
  * @method     ChildUserQuery groupByType() Group by the type column
+ * @method     ChildUserQuery groupByCom-code() Group by the com-code column
+ * @method     ChildUserQuery groupByConfirmed() Group by the confirmed column
  *
  * @method     ChildUserQuery leftJoin($relation) Adds a LEFT JOIN clause to the query
  * @method     ChildUserQuery rightJoin($relation) Adds a RIGHT JOIN clause to the query
@@ -46,7 +50,9 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildUser findOneById(int $id) Return the first ChildUser filtered by the id column
  * @method     ChildUser findOneByEmail(string $email) Return the first ChildUser filtered by the email column
  * @method     ChildUser findOneByPassword(string $password) Return the first ChildUser filtered by the password column
- * @method     ChildUser findOneByType(string $type) Return the first ChildUser filtered by the type column *
+ * @method     ChildUser findOneByType(string $type) Return the first ChildUser filtered by the type column
+ * @method     ChildUser findOneByCom-code(string $com-code) Return the first ChildUser filtered by the com-code column
+ * @method     ChildUser findOneByConfirmed(boolean $confirmed) Return the first ChildUser filtered by the confirmed column *
 
  * @method     ChildUser requirePk($key, ConnectionInterface $con = null) Return the ChildUser by primary key and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildUser requireOne(ConnectionInterface $con = null) Return the first ChildUser matching the query and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
@@ -55,12 +61,16 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildUser requireOneByEmail(string $email) Return the first ChildUser filtered by the email column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildUser requireOneByPassword(string $password) Return the first ChildUser filtered by the password column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildUser requireOneByType(string $type) Return the first ChildUser filtered by the type column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildUser requireOneByCom-code(string $com-code) Return the first ChildUser filtered by the com-code column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildUser requireOneByConfirmed(boolean $confirmed) Return the first ChildUser filtered by the confirmed column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  *
  * @method     ChildUser[]|ObjectCollection find(ConnectionInterface $con = null) Return ChildUser objects based on current ModelCriteria
  * @method     ChildUser[]|ObjectCollection findById(int $id) Return ChildUser objects filtered by the id column
  * @method     ChildUser[]|ObjectCollection findByEmail(string $email) Return ChildUser objects filtered by the email column
  * @method     ChildUser[]|ObjectCollection findByPassword(string $password) Return ChildUser objects filtered by the password column
  * @method     ChildUser[]|ObjectCollection findByType(string $type) Return ChildUser objects filtered by the type column
+ * @method     ChildUser[]|ObjectCollection findByCom-code(string $com-code) Return ChildUser objects filtered by the com-code column
+ * @method     ChildUser[]|ObjectCollection findByConfirmed(boolean $confirmed) Return ChildUser objects filtered by the confirmed column
  * @method     ChildUser[]|\Propel\Runtime\Util\PropelModelPager paginate($page = 1, $maxPerPage = 10, ConnectionInterface $con = null) Issue a SELECT query based on the current ModelCriteria and uses a page and a maximum number of results per page to compute an offset and a limit
  *
  */
@@ -153,7 +163,7 @@ abstract class UserQuery extends ModelCriteria
      */
     protected function findPkSimple($key, ConnectionInterface $con)
     {
-        $sql = 'SELECT id, email, password, type FROM user WHERE id = :p0';
+        $sql = 'SELECT id, email, password, type, com-code, confirmed FROM user WHERE id = :p0';
         try {
             $stmt = $con->prepare($sql);
             $stmt->bindValue(':p0', $key, PDO::PARAM_INT);
@@ -369,6 +379,62 @@ abstract class UserQuery extends ModelCriteria
         }
 
         return $this->addUsingAlias(UserTableMap::COL_TYPE, $type, $comparison);
+    }
+
+    /**
+     * Filter the query on the com-code column
+     *
+     * Example usage:
+     * <code>
+     * $query->filterByCom-code('fooValue');   // WHERE com-code = 'fooValue'
+     * $query->filterByCom-code('%fooValue%'); // WHERE com-code LIKE '%fooValue%'
+     * </code>
+     *
+     * @param     string $com-code The value to use as filter.
+     *              Accepts wildcards (* and % trigger a LIKE)
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return $this|ChildUserQuery The current query, for fluid interface
+     */
+    public function filterByCom-code($com-code = null, $comparison = null)
+    {
+        if (null === $comparison) {
+            if (is_array($com-code)) {
+                $comparison = Criteria::IN;
+            } elseif (preg_match('/[\%\*]/', $com-code)) {
+                $com-code = str_replace('*', '%', $com-code);
+                $comparison = Criteria::LIKE;
+            }
+        }
+
+        return $this->addUsingAlias(UserTableMap::COL_COM-CODE, $com-code, $comparison);
+    }
+
+    /**
+     * Filter the query on the confirmed column
+     *
+     * Example usage:
+     * <code>
+     * $query->filterByConfirmed(true); // WHERE confirmed = true
+     * $query->filterByConfirmed('yes'); // WHERE confirmed = true
+     * </code>
+     *
+     * @param     boolean|string $confirmed The value to use as filter.
+     *              Non-boolean arguments are converted using the following rules:
+     *                * 1, '1', 'true',  'on',  and 'yes' are converted to boolean true
+     *                * 0, '0', 'false', 'off', and 'no'  are converted to boolean false
+     *              Check on string values is case insensitive (so 'FaLsE' is seen as 'false').
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return $this|ChildUserQuery The current query, for fluid interface
+     */
+    public function filterByConfirmed($confirmed = null, $comparison = null)
+    {
+        if (is_string($confirmed)) {
+            $confirmed = in_array(strtolower($confirmed), array('false', 'off', '-', 'no', 'n', '0', '')) ? false : true;
+        }
+
+        return $this->addUsingAlias(UserTableMap::COL_CONFIRMED, $confirmed, $comparison);
     }
 
     /**

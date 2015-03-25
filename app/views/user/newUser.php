@@ -24,7 +24,7 @@
 
 
 				<div class="col-md-6 col-md-offset-3">
-					<form role="form" action="newUser.php" method="post">
+					<form role="form" action="/user" method="post">
 			   		  <div class="form-group">
 					    <label for="FirstName">First Name</label>
 					    <input  class="form-control" id="FirstName" name="firstname"  placeholder="First Name">

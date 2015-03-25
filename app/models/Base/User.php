@@ -88,6 +88,18 @@ abstract class User implements ActiveRecordInterface
     protected $type;
 
     /**
+     * The value for the com-code field.
+     * @var        string
+     */
+    protected $com-code;
+
+    /**
+     * The value for the confirmed field.
+     * @var        boolean
+     */
+    protected $confirmed;
+
+    /**
      * @var        ObjectCollection|ChildCharity[] Collection to store aggregation of ChildCharity objects.
      */
     protected $collCharities;
@@ -365,6 +377,36 @@ abstract class User implements ActiveRecordInterface
     }
 
     /**
+     * Get the [com-code] column value.
+     *
+     * @return string
+     */
+    public function getCom-code()
+    {
+        return $this->com-code;
+    }
+
+    /**
+     * Get the [confirmed] column value.
+     *
+     * @return boolean
+     */
+    public function getConfirmed()
+    {
+        return $this->confirmed;
+    }
+
+    /**
+     * Get the [confirmed] column value.
+     *
+     * @return boolean
+     */
+    public function isConfirmed()
+    {
+        return $this->getConfirmed();
+    }
+
+    /**
      * Set the value of [id] column.
      *
      * @param int $v new value
@@ -445,6 +487,54 @@ abstract class User implements ActiveRecordInterface
     } // setType()
 
     /**
+     * Set the value of [com-code] column.
+     *
+     * @param string $v new value
+     * @return $this|\User The current object (for fluent API support)
+     */
+    public function setCom-code($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->com-code !== $v) {
+            $this->com-code = $v;
+            $this->modifiedColumns[UserTableMap::COL_COM-CODE] = true;
+        }
+
+        return $this;
+    } // setCom-code()
+
+    /**
+     * Sets the value of the [confirmed] column.
+     * Non-boolean arguments are converted using the following rules:
+     *   * 1, '1', 'true',  'on',  and 'yes' are converted to boolean true
+     *   * 0, '0', 'false', 'off', and 'no'  are converted to boolean false
+     * Check on string values is case insensitive (so 'FaLsE' is seen as 'false').
+     *
+     * @param  boolean|integer|string $v The new value
+     * @return $this|\User The current object (for fluent API support)
+     */
+    public function setConfirmed($v)
+    {
+        if ($v !== null) {
+            if (is_string($v)) {
+                $v = in_array(strtolower($v), array('false', 'off', '-', 'no', 'n', '0', '')) ? false : true;
+            } else {
+                $v = (boolean) $v;
+            }
+        }
+
+        if ($this->confirmed !== $v) {
+            $this->confirmed = $v;
+            $this->modifiedColumns[UserTableMap::COL_CONFIRMED] = true;
+        }
+
+        return $this;
+    } // setConfirmed()
+
+    /**
      * Indicates whether the columns in this object are only set to default values.
      *
      * This method can be used in conjunction with isModified() to indicate whether an object is both
@@ -491,6 +581,12 @@ abstract class User implements ActiveRecordInterface
 
             $col = $row[TableMap::TYPE_NUM == $indexType ? 3 + $startcol : UserTableMap::translateFieldName('Type', TableMap::TYPE_PHPNAME, $indexType)];
             $this->type = (null !== $col) ? (string) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 4 + $startcol : UserTableMap::translateFieldName('Com-code', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->com-code = (null !== $col) ? (string) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 5 + $startcol : UserTableMap::translateFieldName('Confirmed', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->confirmed = (null !== $col) ? (boolean) $col : null;
             $this->resetModified();
 
             $this->setNew(false);
@@ -499,7 +595,7 @@ abstract class User implements ActiveRecordInterface
                 $this->ensureConsistency();
             }
 
-            return $startcol + 4; // 4 = UserTableMap::NUM_HYDRATE_COLUMNS.
+            return $startcol + 6; // 6 = UserTableMap::NUM_HYDRATE_COLUMNS.
 
         } catch (Exception $e) {
             throw new PropelException(sprintf('Error populating %s object', '\\User'), 0, $e);
@@ -728,6 +824,12 @@ abstract class User implements ActiveRecordInterface
         if ($this->isColumnModified(UserTableMap::COL_TYPE)) {
             $modifiedColumns[':p' . $index++]  = 'type';
         }
+        if ($this->isColumnModified(UserTableMap::COL_COM-CODE)) {
+            $modifiedColumns[':p' . $index++]  = 'com-code';
+        }
+        if ($this->isColumnModified(UserTableMap::COL_CONFIRMED)) {
+            $modifiedColumns[':p' . $index++]  = 'confirmed';
+        }
 
         $sql = sprintf(
             'INSERT INTO user (%s) VALUES (%s)',
@@ -750,6 +852,12 @@ abstract class User implements ActiveRecordInterface
                         break;
                     case 'type':
                         $stmt->bindValue($identifier, $this->type, PDO::PARAM_STR);
+                        break;
+                    case 'com-code':
+                        $stmt->bindValue($identifier, $this->com-code, PDO::PARAM_STR);
+                        break;
+                    case 'confirmed':
+                        $stmt->bindValue($identifier, (int) $this->confirmed, PDO::PARAM_INT);
                         break;
                 }
             }
@@ -825,6 +933,12 @@ abstract class User implements ActiveRecordInterface
             case 3:
                 return $this->getType();
                 break;
+            case 4:
+                return $this->getCom-code();
+                break;
+            case 5:
+                return $this->getConfirmed();
+                break;
             default:
                 return null;
                 break;
@@ -859,6 +973,8 @@ abstract class User implements ActiveRecordInterface
             $keys[1] => $this->getEmail(),
             $keys[2] => $this->getPassword(),
             $keys[3] => $this->getType(),
+            $keys[4] => $this->getCom-code(),
+            $keys[5] => $this->getConfirmed(),
         );
         $virtualColumns = $this->virtualColumns;
         foreach ($virtualColumns as $key => $virtualColumn) {
@@ -927,6 +1043,12 @@ abstract class User implements ActiveRecordInterface
             case 3:
                 $this->setType($value);
                 break;
+            case 4:
+                $this->setCom-code($value);
+                break;
+            case 5:
+                $this->setConfirmed($value);
+                break;
         } // switch()
 
         return $this;
@@ -964,6 +1086,12 @@ abstract class User implements ActiveRecordInterface
         }
         if (array_key_exists($keys[3], $arr)) {
             $this->setType($arr[$keys[3]]);
+        }
+        if (array_key_exists($keys[4], $arr)) {
+            $this->setCom-code($arr[$keys[4]]);
+        }
+        if (array_key_exists($keys[5], $arr)) {
+            $this->setConfirmed($arr[$keys[5]]);
         }
     }
 
@@ -1017,6 +1145,12 @@ abstract class User implements ActiveRecordInterface
         }
         if ($this->isColumnModified(UserTableMap::COL_TYPE)) {
             $criteria->add(UserTableMap::COL_TYPE, $this->type);
+        }
+        if ($this->isColumnModified(UserTableMap::COL_COM-CODE)) {
+            $criteria->add(UserTableMap::COL_COM-CODE, $this->com-code);
+        }
+        if ($this->isColumnModified(UserTableMap::COL_CONFIRMED)) {
+            $criteria->add(UserTableMap::COL_CONFIRMED, $this->confirmed);
         }
 
         return $criteria;
@@ -1107,6 +1241,8 @@ abstract class User implements ActiveRecordInterface
         $copyObj->setEmail($this->getEmail());
         $copyObj->setPassword($this->getPassword());
         $copyObj->setType($this->getType());
+        $copyObj->setCom-code($this->getCom-code());
+        $copyObj->setConfirmed($this->getConfirmed());
 
         if ($deepCopy) {
             // important: temporarily setNew(false) because this affects the behavior of
@@ -1394,6 +1530,8 @@ abstract class User implements ActiveRecordInterface
         $this->email = null;
         $this->password = null;
         $this->type = null;
+        $this->com-code = null;
+        $this->confirmed = null;
         $this->alreadyInSave = false;
         $this->clearAllReferences();
         $this->resetModified();

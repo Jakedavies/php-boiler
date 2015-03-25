@@ -15,6 +15,7 @@ CREATE TABLE `user`
     `email` VARCHAR(255),
     `password` VARCHAR(255),
     `type` VARCHAR(255),
+    `com-code` VARCHAR(255),
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 

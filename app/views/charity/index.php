@@ -1,8 +1,11 @@
 <div class="row">
     <div class="col-xs-10 col-sm-8 col-md-6 col-lg-6 col-xs-offset-1 col-sm-offset-2 col-md-offset-3 col-lg-offset-3">
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
-        </div>
+        <form action="/charity" method="GET" class="input-group">
+            <input  class="form-control" id="search" name="searchquery" type="text"  placeholder="Search">
+            <span class="input-group-btn">
+                <button name="charitysearch" class="btn btn-default" type="submit">Search</button>
+            </span>
+        </form>
     </div>
 </div>
 
