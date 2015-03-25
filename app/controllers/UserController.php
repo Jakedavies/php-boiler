@@ -26,8 +26,11 @@ class UserController extends BaseController
         }
         else
         {
+            //Error message
+            $error = "Incorrect email or password";
             // Redirect
-            $response->redirect('/user/login');
+            $response->redirect('/user/login?error='.$error);
+
         }
     }
     public static function getRegistration($response,$request)
