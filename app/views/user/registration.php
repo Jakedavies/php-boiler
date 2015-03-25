@@ -11,26 +11,14 @@
     </div>
     <div class="panel-body">
         <div class="col-md-6 col-md-offset-3">
-            <form role="form" action="newUser.php" method="post">
-                <div class="form-group">
-                    <label for="FirstName">First Name</label>
-                    <input  class="form-control" id="FirstName" name="firstname"  placeholder="First Name">
-                </div>
-                <div class="form-group">
-                    <label for="LastName">Last Name</label>
-                    <input  class="form-control" id="LastName" name="lastname" placeholder="Last Name">
-                </div>
-                <div class="form-group">
-                    <label for="Username">Username</label>
-                    <input class="form-control" id="username" name="username" placeholder="Username">
-                </div>
+            <form role="form" action="/user/registration" method="post">
                 <div class="form-group">
                     <label for="Email">Email address</label>
                     <input type="email" class="form-control" id="Email" name="email" placeholder="Email">
                 </div>
                 <div class="form-group">
                     <label for="Password1">Password</label>
-                    <input type="password" class="form-control" id="Password1" name="password" placeholder="Password">
+                    <input type="password" class="form-control" id="password1" name="password" placeholder="Password">
                 </div>
                 <div class="form-group">
                     <label for="Password2">Confirm Password</label>
