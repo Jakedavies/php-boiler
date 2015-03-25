@@ -4,7 +4,7 @@
     <column name="email" type="varchar" />
     <column name="password" type="varchar" />
     <column name="type" type="varchar"/>
-      <column name="com-code" type="varchar"/>
+      <column name="con_code" type="varchar"/>
       <column name="confirmed" type="boolean"/>
   </table>
   <table name="charity">

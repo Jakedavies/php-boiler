@@ -51,7 +51,7 @@ $klein->with('/user', function () use ($klein) {
     $klein->respond('GET','/edit', function($request, $response, $service, $app){
         UserController::getEditAccount($response,$request);
     });
-    $klein->respond('GET','/registration/[:com-code]', function($request, $response, $service, $app){
+    $klein->respond('GET','/registration/[:con_code]', function($request, $response, $service, $app){
         UserController::confirm($response,$request);
     });
 });
