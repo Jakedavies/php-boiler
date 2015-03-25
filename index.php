@@ -51,6 +51,9 @@ $klein->with('/user', function () use ($klein) {
     $klein->respond('GET','/edit', function($request, $response, $service, $app){
         UserController::getEditAccount($response,$request);
     });
+    $klein->respond('GET','/registration/[:com-code]', function($request, $response, $service, $app){
+        UserController::confirm($response,$request);
+    });
 });
 //Charity Page Route
 $klein->with('/charity', function () use ($klein) {
@@ -73,7 +76,6 @@ $klein->with('/charity', function () use ($klein) {
     $klein->respond('GET','?', function($request, $response, $service, $app){
         CharityController::getIndex($response,$request);
     });
-
 });
 $klein->respond('404',function (){
     echo '<h5>Page Not Found</h5>';

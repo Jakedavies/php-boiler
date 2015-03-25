@@ -6,8 +6,8 @@
         "ccampbell/chromephp": "*",
         "propel/propel": "~2.0@dev",
         "monolog/monolog": "1.*",
-        "phpunit": "*"
-    },
+    	"mailgun/mailgun-php":"dev-master"
+	},
     "autoload": {
         "classmap": ["app/models/"]
     },

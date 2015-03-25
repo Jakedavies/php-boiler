@@ -59,7 +59,7 @@ class UserTableMap extends TableMap
     /**
      * The total number of columns
      */
-    const NUM_COLUMNS = 4;
+    const NUM_COLUMNS = 6;
 
     /**
      * The number of lazy-loaded columns
@@ -69,7 +69,7 @@ class UserTableMap extends TableMap
     /**
      * The number of columns to hydrate (NUM_COLUMNS - NUM_LAZY_LOAD_COLUMNS)
      */
-    const NUM_HYDRATE_COLUMNS = 4;
+    const NUM_HYDRATE_COLUMNS = 6;
 
     /**
      * the column name for the id field
@@ -92,6 +92,16 @@ class UserTableMap extends TableMap
     const COL_TYPE = 'user.type';
 
     /**
+     * the column name for the com-code field
+     */
+    const COL_COM-CODE = 'user.com-code';
+
+    /**
+     * the column name for the confirmed field
+     */
+    const COL_CONFIRMED = 'user.confirmed';
+
+    /**
      * The default string format for model objects of the related table
      */
     const DEFAULT_STRING_FORMAT = 'YAML';
@@ -103,11 +113,11 @@ class UserTableMap extends TableMap
      * e.g. self::$fieldNames[self::TYPE_PHPNAME][0] = 'Id'
      */
     protected static $fieldNames = array (
-        self::TYPE_PHPNAME       => array('Id', 'Email', 'Password', 'Type', ),
-        self::TYPE_CAMELNAME     => array('id', 'email', 'password', 'type', ),
-        self::TYPE_COLNAME       => array(UserTableMap::COL_ID, UserTableMap::COL_EMAIL, UserTableMap::COL_PASSWORD, UserTableMap::COL_TYPE, ),
-        self::TYPE_FIELDNAME     => array('id', 'email', 'password', 'type', ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, )
+        self::TYPE_PHPNAME       => array('Id', 'Email', 'Password', 'Type', 'Com-code', 'Confirmed', ),
+        self::TYPE_CAMELNAME     => array('id', 'email', 'password', 'type', 'com-code', 'confirmed', ),
+        self::TYPE_COLNAME       => array(UserTableMap::COL_ID, UserTableMap::COL_EMAIL, UserTableMap::COL_PASSWORD, UserTableMap::COL_TYPE, UserTableMap::COL_COM-CODE, UserTableMap::COL_CONFIRMED, ),
+        self::TYPE_FIELDNAME     => array('id', 'email', 'password', 'type', 'com-code', 'confirmed', ),
+        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, )
     );
 
     /**
@@ -117,11 +127,11 @@ class UserTableMap extends TableMap
      * e.g. self::$fieldKeys[self::TYPE_PHPNAME]['Id'] = 0
      */
     protected static $fieldKeys = array (
-        self::TYPE_PHPNAME       => array('Id' => 0, 'Email' => 1, 'Password' => 2, 'Type' => 3, ),
-        self::TYPE_CAMELNAME     => array('id' => 0, 'email' => 1, 'password' => 2, 'type' => 3, ),
-        self::TYPE_COLNAME       => array(UserTableMap::COL_ID => 0, UserTableMap::COL_EMAIL => 1, UserTableMap::COL_PASSWORD => 2, UserTableMap::COL_TYPE => 3, ),
-        self::TYPE_FIELDNAME     => array('id' => 0, 'email' => 1, 'password' => 2, 'type' => 3, ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, )
+        self::TYPE_PHPNAME       => array('Id' => 0, 'Email' => 1, 'Password' => 2, 'Type' => 3, 'Com-code' => 4, 'Confirmed' => 5, ),
+        self::TYPE_CAMELNAME     => array('id' => 0, 'email' => 1, 'password' => 2, 'type' => 3, 'com-code' => 4, 'confirmed' => 5, ),
+        self::TYPE_COLNAME       => array(UserTableMap::COL_ID => 0, UserTableMap::COL_EMAIL => 1, UserTableMap::COL_PASSWORD => 2, UserTableMap::COL_TYPE => 3, UserTableMap::COL_COM-CODE => 4, UserTableMap::COL_CONFIRMED => 5, ),
+        self::TYPE_FIELDNAME     => array('id' => 0, 'email' => 1, 'password' => 2, 'type' => 3, 'com-code' => 4, 'confirmed' => 5, ),
+        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, )
     );
 
     /**
@@ -145,6 +155,8 @@ class UserTableMap extends TableMap
         $this->addColumn('email', 'Email', 'VARCHAR', false, 255, null);
         $this->addColumn('password', 'Password', 'VARCHAR', false, 255, null);
         $this->addColumn('type', 'Type', 'VARCHAR', false, 255, null);
+        $this->addColumn('com-code', 'Com-code', 'VARCHAR', false, 255, null);
+        $this->addColumn('confirmed', 'Confirmed', 'BOOLEAN', false, 1, null);
     } // initialize()
 
     /**
@@ -306,11 +318,15 @@ class UserTableMap extends TableMap
             $criteria->addSelectColumn(UserTableMap::COL_EMAIL);
             $criteria->addSelectColumn(UserTableMap::COL_PASSWORD);
             $criteria->addSelectColumn(UserTableMap::COL_TYPE);
+            $criteria->addSelectColumn(UserTableMap::COL_COM-CODE);
+            $criteria->addSelectColumn(UserTableMap::COL_CONFIRMED);
         } else {
             $criteria->addSelectColumn($alias . '.id');
             $criteria->addSelectColumn($alias . '.email');
             $criteria->addSelectColumn($alias . '.password');
             $criteria->addSelectColumn($alias . '.type');
+            $criteria->addSelectColumn($alias . '.com-code');
+            $criteria->addSelectColumn($alias . '.confirmed');
         }
     }
 
