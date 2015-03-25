@@ -88,10 +88,10 @@ abstract class User implements ActiveRecordInterface
     protected $type;
 
     /**
-     * The value for the com-code field.
+     * The value for the con_code field.
      * @var        string
      */
-    protected $com-code;
+    protected $con_code;
 
     /**
      * The value for the confirmed field.
@@ -377,13 +377,13 @@ abstract class User implements ActiveRecordInterface
     }
 
     /**
-     * Get the [com-code] column value.
+     * Get the [con_code] column value.
      *
      * @return string
      */
-    public function getCom-code()
+    public function getConCode()
     {
-        return $this->com-code;
+        return $this->con_code;
     }
 
     /**
@@ -487,24 +487,24 @@ abstract class User implements ActiveRecordInterface
     } // setType()
 
     /**
-     * Set the value of [com-code] column.
+     * Set the value of [con_code] column.
      *
      * @param string $v new value
      * @return $this|\User The current object (for fluent API support)
      */
-    public function setCom-code($v)
+    public function setConCode($v)
     {
         if ($v !== null) {
             $v = (string) $v;
         }
 
-        if ($this->com-code !== $v) {
-            $this->com-code = $v;
-            $this->modifiedColumns[UserTableMap::COL_COM-CODE] = true;
+        if ($this->con_code !== $v) {
+            $this->con_code = $v;
+            $this->modifiedColumns[UserTableMap::COL_CON_CODE] = true;
         }
 
         return $this;
-    } // setCom-code()
+    } // setConCode()
 
     /**
      * Sets the value of the [confirmed] column.
@@ -582,8 +582,8 @@ abstract class User implements ActiveRecordInterface
             $col = $row[TableMap::TYPE_NUM == $indexType ? 3 + $startcol : UserTableMap::translateFieldName('Type', TableMap::TYPE_PHPNAME, $indexType)];
             $this->type = (null !== $col) ? (string) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 4 + $startcol : UserTableMap::translateFieldName('Com-code', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->com-code = (null !== $col) ? (string) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 4 + $startcol : UserTableMap::translateFieldName('ConCode', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->con_code = (null !== $col) ? (string) $col : null;
 
             $col = $row[TableMap::TYPE_NUM == $indexType ? 5 + $startcol : UserTableMap::translateFieldName('Confirmed', TableMap::TYPE_PHPNAME, $indexType)];
             $this->confirmed = (null !== $col) ? (boolean) $col : null;
@@ -824,8 +824,8 @@ abstract class User implements ActiveRecordInterface
         if ($this->isColumnModified(UserTableMap::COL_TYPE)) {
             $modifiedColumns[':p' . $index++]  = 'type';
         }
-        if ($this->isColumnModified(UserTableMap::COL_COM-CODE)) {
-            $modifiedColumns[':p' . $index++]  = 'com-code';
+        if ($this->isColumnModified(UserTableMap::COL_CON_CODE)) {
+            $modifiedColumns[':p' . $index++]  = 'con_code';
         }
         if ($this->isColumnModified(UserTableMap::COL_CONFIRMED)) {
             $modifiedColumns[':p' . $index++]  = 'confirmed';
@@ -853,8 +853,8 @@ abstract class User implements ActiveRecordInterface
                     case 'type':
                         $stmt->bindValue($identifier, $this->type, PDO::PARAM_STR);
                         break;
-                    case 'com-code':
-                        $stmt->bindValue($identifier, $this->com-code, PDO::PARAM_STR);
+                    case 'con_code':
+                        $stmt->bindValue($identifier, $this->con_code, PDO::PARAM_STR);
                         break;
                     case 'confirmed':
                         $stmt->bindValue($identifier, (int) $this->confirmed, PDO::PARAM_INT);
@@ -934,7 +934,7 @@ abstract class User implements ActiveRecordInterface
                 return $this->getType();
                 break;
             case 4:
-                return $this->getCom-code();
+                return $this->getConCode();
                 break;
             case 5:
                 return $this->getConfirmed();
@@ -973,7 +973,7 @@ abstract class User implements ActiveRecordInterface
             $keys[1] => $this->getEmail(),
             $keys[2] => $this->getPassword(),
             $keys[3] => $this->getType(),
-            $keys[4] => $this->getCom-code(),
+            $keys[4] => $this->getConCode(),
             $keys[5] => $this->getConfirmed(),
         );
         $virtualColumns = $this->virtualColumns;
@@ -1044,7 +1044,7 @@ abstract class User implements ActiveRecordInterface
                 $this->setType($value);
                 break;
             case 4:
-                $this->setCom-code($value);
+                $this->setConCode($value);
                 break;
             case 5:
                 $this->setConfirmed($value);
@@ -1088,7 +1088,7 @@ abstract class User implements ActiveRecordInterface
             $this->setType($arr[$keys[3]]);
         }
         if (array_key_exists($keys[4], $arr)) {
-            $this->setCom-code($arr[$keys[4]]);
+            $this->setConCode($arr[$keys[4]]);
         }
         if (array_key_exists($keys[5], $arr)) {
             $this->setConfirmed($arr[$keys[5]]);
@@ -1146,8 +1146,8 @@ abstract class User implements ActiveRecordInterface
         if ($this->isColumnModified(UserTableMap::COL_TYPE)) {
             $criteria->add(UserTableMap::COL_TYPE, $this->type);
         }
-        if ($this->isColumnModified(UserTableMap::COL_COM-CODE)) {
-            $criteria->add(UserTableMap::COL_COM-CODE, $this->com-code);
+        if ($this->isColumnModified(UserTableMap::COL_CON_CODE)) {
+            $criteria->add(UserTableMap::COL_CON_CODE, $this->con_code);
         }
         if ($this->isColumnModified(UserTableMap::COL_CONFIRMED)) {
             $criteria->add(UserTableMap::COL_CONFIRMED, $this->confirmed);
@@ -1241,7 +1241,7 @@ abstract class User implements ActiveRecordInterface
         $copyObj->setEmail($this->getEmail());
         $copyObj->setPassword($this->getPassword());
         $copyObj->setType($this->getType());
-        $copyObj->setCom-code($this->getCom-code());
+        $copyObj->setConCode($this->getConCode());
         $copyObj->setConfirmed($this->getConfirmed());
 
         if ($deepCopy) {
@@ -1530,7 +1530,7 @@ abstract class User implements ActiveRecordInterface
         $this->email = null;
         $this->password = null;
         $this->type = null;
-        $this->com-code = null;
+        $this->con_code = null;
         $this->confirmed = null;
         $this->alreadyInSave = false;
         $this->clearAllReferences();
