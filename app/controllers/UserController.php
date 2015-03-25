@@ -1,4 +1,5 @@
 <?php
+use Mailgun\Mailgun;
 
 class UserController extends BaseController
 {
@@ -44,17 +45,34 @@ class UserController extends BaseController
         $user->setEmail($request->param('email'));
         $user->setPassword($request->param('password'));
         $code=md5(mt_rand());
-        $user->setCom-code($code);
-        $user->setConfrimed(0);
+        error_log("Random code is: " . $code);
+        $user->setConCode($code);
+        $user->setConfirmed(false);
         $user->save();
-//        $verify = new VerifyEmailMailer(param('email'));
-        //$verify->send();
+        error_log("Saved user " . $request->param('email'));
+        $verify = new VerifyEmailMailer($request->param('email'));
+        $verify->addBody($code);
+        $verify->send();
+        // Redirect
+//        $response->redirect('/user/login');
     }
+
     public static function confirm($response,$request) {
-        //If confirmed
-        echo 'you have been confirmed';
-        //else
-        echo 'you have not been confirmed';
+        error_log("Confirming User");
+        $code = $request->param('con_code');
+        $redirectedUser = UserQuery::create()->findOneByConCode($code);
+        if($code==$redirectedUser->getConCode()) {
+            error_log("User has been confirmed");
+            echo 'you have been confirmed';
+            // Set user as confirmed
+            $redirectedUser->setConfirmed(true);
+            $redirectedUser->setConCode(null);
+            $redirectedUser->save();
+        }
+        else {
+            error_log("User cannot be confirmed with that code");
+            echo 'you have not been confirmed';
+        }
     }
     public static function getAccount($response,$request)
     {
