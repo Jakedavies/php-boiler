@@ -54,6 +54,9 @@ $klein->with('/user', function () use ($klein) {
     $klein->respond('GET','/registration/[:con_code]', function($request, $response, $service, $app){
         UserController::confirm($response,$request);
     });
+    $klein->respond('GET','/reset', function($request, $response, $service, $app){
+        UserController::getReset($response,$request);
+    });
 });
 //Charity Page Route
 $klein->with('/charity', function () use ($klein) {

@@ -35,6 +35,10 @@ class UserController extends BaseController
     {
         Renderer::renderView('/user/registration');
     }
+    public static function getReset($response,$request)
+    {
+        Renderer::renderView('/user/reset');
+    }
     public static function getSponsorRegistration($response,$request)
     {
         Renderer::renderView('/user/sponsor_registration');
