@@ -58,6 +58,7 @@ class UserController extends BaseController
         $verify->addBody($code);
         $verify->send();
         // Redirect
+        echo "Please check your email.";
 //        $response->redirect('/user/login');
     }
 
@@ -67,7 +68,8 @@ class UserController extends BaseController
         $redirectedUser = UserQuery::create()->findOneByConCode($code);
         if($code==$redirectedUser->getConCode()) {
             error_log("User has been confirmed");
-            echo 'you have been confirmed';
+            $response->redirect('/user/login');
+            // echo 'you have been confirmed';
             // Set user as confirmed
             $redirectedUser->setConfirmed(true);
             $redirectedUser->setConCode(null);
@@ -90,5 +92,10 @@ class UserController extends BaseController
     {
         Renderer::renderView('/user/editAccount');
     }
+    public static function getPrintReceipt($response,$request)
+    {
+        Renderer::renderView('/user/printReceipt');
+    }
+
 
 }

@@ -57,6 +57,12 @@ $klein->with('/user', function () use ($klein) {
     $klein->respond('GET','/reset', function($request, $response, $service, $app){
         UserController::getReset($response,$request);
     });
+    $klein->respond('GET','/print', function($request, $response, $service, $app){
+        UserController::getPrintReceipt($response,$request);
+    });
+    $klein->respond('GET','/checkEmail', function($request, $response, $service, $app){
+        UserController::checkEmail($response,$request);
+    });
 });
 //Charity Page Route
 $klein->with('/charity', function () use ($klein) {
