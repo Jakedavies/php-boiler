@@ -1,51 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Browse Charities - Donation Bros</title>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>PHP Boilerplate</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="/assets/css/bootstrap.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="/assets/css/custom.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="/assets/css/stylesheet.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </head>
-
 <body>
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
+<!--Navigation Bar-->
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Project name</a>
+            <a class="navbar-brand" href="/lander">Donation Bros</a>
         </div>
-        <div id="navbar" class="collapse navbar-collapse">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li class="active"><a href="/charity">Find</a></li>
+                <li><a href="/about">About Us</a></li>
+                </li>
             </ul>
-        </div><!--/.nav-collapse -->
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <?php if(current_user()): ?>
+                        <!-- If current user exists, there is a user logged in-->
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?= current_user()->getEmail() ?><span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="/user/logout">Logout</a></li>
+                            <li><a href="/user/account">Account Details</a></li>
+                        </ul>
+                    <?php else: ?>
+                        <a href="/user/login" aria-expanded="false">Login</span></a>
+                    <?php endif; ?>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>
 
-<div class="container">
-    <?=$content ?>
-</div><!-- /.container -->
 
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="/asses/js//bootstrap.min.js"></script>
-
+<!-- main deal main deal-->
+<div class = "container">
+    <?=$content?>
+</div>
 </body>
 </html>

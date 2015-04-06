@@ -5,3 +5,28 @@ body {
     padding: 40px 15px;
     text-align: center;
 }
+h1{
+    text-align:center;
+    font-family: Garamond;
+}
+label{
+    font-family: Garamond;
+}
+.user{
+    text-align:center;
+}
+.panel{
+    margin-top:25px;
+    padding-top:20px;
+}
+.page-header{
+    text-align: center;
+}
+
+
+.panel-heading{
+    text-align:center;
+}
+.form-group{
+    width: 100%;
+}

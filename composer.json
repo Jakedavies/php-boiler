@@ -5,10 +5,11 @@
         "symfony/yaml": "2.*",
         "ccampbell/chromephp": "*",
         "propel/propel": "~2.0@dev",
-        "monolog/monolog": "1.*"
-    },
+        "monolog/monolog": "1.*",
+    	"mailgun/mailgun-php":"dev-master"
+	},
     "autoload": {
-        "classmap": ["protected/models/generated-classes/"]
+        "classmap": ["app/models/"]
     },
     "minimum-stability": "dev",
     "config": {
