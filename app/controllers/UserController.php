@@ -27,8 +27,11 @@ class UserController extends BaseController
         }
         else
         {
+            //Error message
+            $error = "Incorrect Emmail or Password";
             // Redirect
-            $response->redirect('/user/login');
+            $response->redirect('/user/login?error='.$error);
+
         }
     }
     public static function getRegistration($response,$request)
@@ -45,18 +48,38 @@ class UserController extends BaseController
     }
     public static function postRegistration($response,$request)
     {
-        $user = new User();
-        $user->setEmail($request->param('email'));
-        $user->setPassword($request->param('password'));
-        $code=md5(mt_rand());
-        error_log("Random code is: " . $code);
-        $user->setConCode($code);
-        $user->setConfirmed(false);
-        $user->save();
-        error_log("Saved user " . $request->param('email'));
-        $verify = new VerifyEmailMailer($request->param('email'));
-        $verify->addBody($code);
-        $verify->send();
+        $email = $request->param('email');
+        $password = $request->param('password');
+        $confirmPassword = $request->param('password-confirm');
+
+        if($password == $confirmPassword && filter_var($email, FILTER_VALIDATE_EMAIL)){
+            $user = new User();
+            $user->setEmail($request->param('email'));
+            $user->setPassword($request->param('password'));
+            $code=md5(mt_rand());
+            error_log("Random code is: " . $code);
+            $user->setConCode($code);
+            $user->setConfirmed(false);
+            $user->save();
+            error_log("Saved user " . $request->param('email'));
+            $verify = new VerifyEmailMailer($request->param('email'));
+            $verify->addBody($code);
+            $verify->send();
+
+        }
+        elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+            $error = "Email Not Vaild";
+            // Redirect
+            $response->redirect('/user/registration?error='.$error);
+
+        }
+       else{
+           //Error message
+           $error = "Passwords Do Not Match";
+           // Redirect
+           $response->redirect('/user/registration?error='.$error);
+
+       }
         // Redirect
         echo "Please check your email.";
 //        $response->redirect('/user/login');

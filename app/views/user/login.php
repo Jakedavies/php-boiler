@@ -6,6 +6,11 @@
     <div class="panel panel-default">
         <div class="panel-body">
             <form class="form-horizontal" role="form" action="/user/login" method="post">
+                <?php if (isset($_GET['error'])): ?>
+                    <div class="error col-md-offset-2">
+                        <h5 style="color: red"><?=($_GET['error'])?></h5>
+                    </div>
+                <?php endif; ?>
               <div class="form-group">
                 <label class="col-sm-2 control-label">Email</label>
                 <div class="col-md-8">
@@ -36,4 +41,5 @@
             </form>
         </div>
     </div>
+
 </div>
